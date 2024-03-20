@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="info_section ">
+        <div class="container">
+          <div class="info_container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="info_logo">
+                  <a href="">
+                    <img src="{% static 'gestionproduit/images/logo.png' %}" alt="">
+                    <span>
+                      Celestin
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2 ">
+                <div class="info_contact">
+                 
+                    <img src="{% static 'gestionproduit/images/location.png' %}" alt="">
+                    <span>
+                      Conakry
+                    </span>
+                  
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="info_contact">
+                  
+                    <img src="{% static 'gestionproduit/images/phone.png' %}" alt="">
+                    <span>
+                      +224 625505969
+                    </span>
+                 
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="info_contact">
+                 
+                    <img src="{% static 'gestionproduit/images/mail.png' %}" alt="">
+                    <span>
+                      jeremiesandouno@gmail.com
+                    </span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="info_form">
+              <div class="d-flex justify-content-center">
+                
+              </div>
+              <form action="">
+               
+                
+              </form>
+            </div>
+            <div class="info_social">
+              <div class="d-flex justify-content-center">
+                <h5 class="info_heading" >
+                 Me suivre
+                </h5>
+              </div>
+              <p id="voir"></p>
+              <div class="social_box">
+                <a href="">
+                  <img src="{% static 'gestionproduit/images/fb.png' %}" alt="">
+                </a>
+                <a href="">
+                  <img src="{% static 'gestionproduit/images/twitter.png' %}" alt="">
+                </a>
+                <a href="">
+                  <img src="{% static 'gestionproduit/images/linkedin.png' %}" alt="">
+                </a>
+                <a href="">
+                  <img src="{% static 'gestionproduit/images/insta.png' %}" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- end info_section -->
+    
+      <!-- footer section -->
+      <section class="container-fluid footer_section">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Free Html Templates</a>
+          
+        </p>
+      </section>
+      <!-- footer section -->
+    
+      <script type="text/javascript" src="{% static 'gestionproduit/js/jquery-3.4.1.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'gestionproduit/css/bootstrap.css' %}" />
+      <script type="text/javascript" src="{% static 'gestionproduit/js/bootstrap.js' %}"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+      <script type="text/javascript" src="{% static 'gestionproduit/js/' %}"></script>
+
+      <script>
+       var cel= document.getElementById('voir') 
+       cel.textContent="<p>sur facebook chez moi</p>"
+      </script>
+</body>
+</html>

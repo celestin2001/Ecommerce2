@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Lodge</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'gestionproduit/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'gestionproduit/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'gestionproduit/css/responsive.css'%}" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              Celestin
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'home' %}">Acceuil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  {% comment %} <a class="nav-link" href="{% url 'detail' %}"> Detail</a> {% endcomment %}
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'categorie' %}">Categories </a>
+                    <ul class="dropdown-menu">
+                      <a class="dropdown-item" href="{% url 'categorie' %}">montre</a>
+                      <a class="dropdown-item"href="{% url 'chaussure' %}">chaussure</a>
+                      <a class="dropdown-item" href="{% url 'maillot' %}">maillot</a>
+                    </ul>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact </a>
+                </li>
+               
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle dat" data-toggle="dropdown" href="#">Connexion</a>
+                  <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'connexion' %}">se connecter</a>
+                    <a class="dropdown-item" href="{% url 'signup' %}">creer un compte</a>
+                  </ul>
+                </li>
+                
+
+              </ul>
+
+            </div>
+           
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+<h1 class="mt-3 text-center" style="color: blue;">Hello ceci est votre panier</h1>
+
+<div class="">
+ <h2 id="list" style="color: blueviolet;"></h2>
+</div>
+<div class="">
+  <h1 id="devi" style="color: blue;"></h1>
+ </div>
+ <div class="">
+  <h1 id="prix" style="color: green;"></h1>
+ </div>
+<h3 class="text-center">pour proceder à la commande veuillez remplir ce formulaire</h3>
+
+<form method="post" class="mt-3 mb-3">
+  {% csrf_token %}
+  <input  type="hidden" id="item" name="item">
+  <div class="form-row">
+    
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nom</label>
+      <input type="" class="form-control" id="nom" placeholder="nom" name="nom">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">email</label>
+      <input type="email" class="form-control" id="email" placeholder="email" name="email">
+    </div>
+  
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="adresse" placeholder="" name="adresse">
+  </div>
+
+  <div class="form-row">
+  
+   
+    <div class="form-group col-md-2">
+      <label for="inputZip">TEL:</label>
+      <input type="text" class="form-control" id="tel" name="tel">
+    </div> 
+  </div>
+
+  <div class="form-group col-md-2">
+    <label for="inputPassword4" style="font-weight: 600;">Somme à payer</label>
+    <input class="bg-dark" type="readonly"  id="total" placeholder="" name="total" style="color: white;">
+  </div>
+
+  <button type="submit" class="btn btn-primary">commander</button>
+</form>
+
+{% include 'gestionproduit/footer.html' %}
+
+<script>
+    
+  
+    
+   if(localStorage.getItem('panier')==null){
+    var panier={}
+   }else{
+    panier=JSON.parse(localStorage.getItem('panier'))
+   }
+   let total=0
+   let nombre=0
+
+   for(item in panier){
+    let nom=panier[item][1]
+    let quantite=panier[item][0]
+    let prix=panier[item][2]
+    total +=prix
+    nombre +=quantite
+    
+    let itemstring=`
+          ${nom} :
+         QUANTITE: ${quantite}   Prix: ${prix} +     `
+     var con= document.getElementById('list').append(itemstring)
+   } 
+   let itemnombre=`
+          Quantite total= ${nombre} 
+          
+        `
+    let pri_total=`
+    Prix total=  ${total}
+    `
+     var con= document.getElementById('devi').append(itemnombre)
+     var pr=document.getElementById('prix').append(pri_total)
+   $('#item').val(JSON.stringify(panier))
+$('#total').val(total+"GNF")
+   
+
+  
+</script>

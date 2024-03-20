@@ -1,0 +1,445 @@
+ {% load static %}
+ {% include 'gestionproduit/header.html' %}
+    <!-- end header section -->
+    <!-- slider section -->
+    
+    <section class=" slider_section position-relative">
+      <div class="design-box">
+        <img src="{% static 'gestionproduit/images/design-1.png' %}" alt="">
+      </div>
+      <div class="slider_number-container d-none d-md-block">
+        <div class="number-box">
+          <span>
+            01
+          </span>
+          <hr>
+          
+          <span class="jwel">
+            J <br>
+            e <br>
+            w <br>
+            e <br>
+            l <br>
+            l <br>
+            e <br>
+            r <br>
+            y
+          </span>
+          <hr>
+          <span>
+            02
+          </span>
+        </div>
+      </div>
+      <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2">03</li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'gestionproduit/images/montre.png' %}" alt="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="detail_box">
+                    <h2>
+                      <span> Montres original</span>
+                      <hr>
+                    </h2>
+                    <h1>
+                      Montre de qualite
+                    </h1>
+                    <p>
+                     Vous êtes au meilleur endroit et au bon moment nous sommes une entreprise 
+                     de vente ici notre priorité est la satisfaction de nos clients
+                    </p>
+                    <div>
+                     <h3 class="btn btn-primary">Bienvenue sur notre site</h3>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="carousel-item ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'gestionproduit/images/maillot.png' %}" alt="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="detail_box">
+                    <h2>
+                      <span> mallot complet</span>
+                      <hr>
+                    </h2>
+                    <h1>
+                      Maillot parfait
+                    </h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consec tetur adipiscing elit elit at felislacinia
+                      aptent taciti sociosqu ad litora torquent per conubia nostra
+                    </p>
+                    <div>
+                      <h3 class="btn btn-primary">Bienvenue sur notre site</h3>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="carousel-item ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'gestionproduit/images/chaussure.png' %}" alt="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="detail_box">
+                    <h2>
+                      <span> Chaussure magnifique</span>
+                      <hr>
+                    </h2>
+                    <h1>
+                      Chaussure magnifique
+                    </h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consec tetur adipiscing elit elit at felislacinia
+                      aptent taciti sociosqu ad litora torquent per conubia nostra
+                    </p>
+                    <div>
+                      <h3 class="btn btn-primary">Bienvenue sur notre site</h3>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- item section -->
+
+  <div class="item_section layout_padding2">
+    <div class="container">
+      <div class="item_container">
+        <div class="box">
+          <div class="price">
+            <h6>
+              Bon prix
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{montre.image.url}}" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              Montre
+            </h5>
+          </div>
+        </div>
+        <div class="box">
+          <div class="price">
+            <h6>
+              Bon prix
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{chaussure.image.url}}" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              Chaussure
+            </h5>
+          </div>
+        </div>
+        <div class="box">
+          <div class="price">
+            <h6>
+              Bon prix
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{maillot.image.url}}" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              Maillot
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end item section -->
+
+  <!-- about section -->
+
+
+
+  <!-- end about section -->
+
+  <!-- price section -->
+
+  <section class="price_section layout_padding">
+    <div class="container">
+      <div class="heading_container text-center">
+        <h2 class="text-center">
+          Bienvenue à la decouverte de nos articles
+        </h2>
+      </div>
+      <div class="price_container">
+        {% for Produit in produit  %}
+        <div class="box">
+          <div class="name">
+            <h6 id="aa{{Produit.id}}">
+              {{Produit.nom}}
+            </h6>
+            <P>{{forloop.counter}}</P>
+          </div>
+          <div class="img-box">
+            <img class="" src="{{Produit.image.url}}" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              <span id="prix{{Produit.id}}">{{Produit.prix}}GNF</span>
+            </h5>
+            
+            <button id="{{Produit.id}}" class="celestinho btn btn-primary mt-3">ajouter</button>
+            <a class="nav-link btn btn-success" href="detail/{{Produit.id}}" >Voir plus</a>
+          </div>
+        </div>
+      
+        {% endfor %}
+      </div>
+      
+     
+    </div>
+  </section>
+
+  <!-- end price section -->
+
+  <!-- ring section -->
+
+  <section class="ring_section layout_padding">
+    <div class="design-box">
+      <img src="{% static 'gestionproduit/images/design-1.png' %}" alt="">
+    </div>
+    <div class="container">
+      <div class="ring_container layout_padding2">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="detail-box">
+              <h4>
+                special Montre
+              </h4>
+              <h2>
+                C'est du jamais vue
+              </h2>
+              
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="img-box">
+              <img src="{% static 'gestionproduit/images/montre.png' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end ring section -->
+
+  <!-- client section -->
+ 
+
+  <section class="client_section">
+    <div class="container">
+      <div class="heading_container">
+        <h2 class="btn btn-primary mt-3" id="commen">
+           ajoutez un Commentaire
+        </h2>
+      </div>
+      <center>
+        <form action="" method="post" enctype="multipart/form-data" id="for">
+          {% csrf_token %}
+         {{form.as_p}}
+         <button type="submit" id="btn">envoie</button>
+        </form>
+      </center>
+
+      <h4 class="secondary_heading">
+        Ce que disent les clients à propos de nos produits
+      </h4>
+
+     
+     
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner">
+          {% for Produit in commen %}
+          <div class="carousel-item {% if forloop.first %}active{% endif%}">
+            
+            <div class="client_container">
+              <div class="client-id">
+                <p>{{forloop.counter}}</p>
+                <div class="img-box">
+                  <img src="{{Produit.image.url}}" alt="">
+                </div>
+                <div class="name">
+                  <h5>
+                   auteur: {{Produit.auteur}}
+                  </h5>
+                  <br>
+                  <h6><strong>date: <br> {{ Produit.datepub|date:"j F Y "}}</strong>
+                     
+                  </h6>
+                </div>
+              </div>
+              <div class="text-center">
+                <p>
+                 {{Produit.contenu}}
+                </p>
+              </div>
+            </div>
+            
+          </div>
+          {% endfor %}
+          
+        </div>
+        
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="design-box">
+      <img src="{% static 'gestionproduit/images/design-2.png' %}" alt="">
+    </div>
+    <div class="container ">
+      <div class="">
+        <h2 class="">
+          Contactez nous
+        </h2>
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-11">
+          <form action="{% url "contact" %}" method="post">
+            {% csrf_token %}
+            <div>
+              <input type="text" placeholder="Name" name="name" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" name="email" />
+            </div>
+            <div>
+              <input type="text" placeholder="Phone" name="phone" />
+            </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Message" name="message" />
+            </div>
+            <div class="d-flex ">
+              <button type="submit">
+                Soumettre
+              </button>
+            </div>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- end contact section -->
+
+  <!-- info section -->
+ {% include 'gestionproduit/footer.html' %}
+ <script type="text/javascript">
+ $(document).ready(function(){
+  $('#for').hide()
+  $('#commen').click(function(){
+    $('#for').slideDown()
+  })
+  $('#btn').click(function(){
+    $('#for').slideUp()
+  })
+ })
+
+ 
+ if(localStorage.getItem('panier')==null){
+  var panier={};
+ }else{
+  panier=JSON.parse(localStorage.getItem('panier'));
+ }
+$(document).on('click','.celestinho',function(){                                      
+  var item_id=this.id.toString()
+  console.log(item_id)
+  if(panier[item_id]!= undefined){
+    quantite=panier[item_id][0] +1;
+    panier[item_id][0]=quantite;
+    panier[item_id][2] +=parseFloat(document.getElementById('prix'+item_id).innerHTML)
+  }else{
+   quantite=1
+   prix=parseFloat(document.getElementById('prix'+item_id).innerHTML)
+   nom=document.getElementById(("aa"+item_id)).innerHTML
+   panier[item_id]=[quantite,nom,prix]
+  }
+  
+  localStorage.setItem('panier',JSON.stringify(panier))
+  document.getElementById('panier').innerHTML=Object.keys(panier).length
+  
+})
+affiche(panier)
+function affiche(panier){
+  var panistring="";
+  var index=1;
+  panistring='Voici votre liste'
+
+  for(var x in panier){
+    panistring +=document.getElementById(("aa"+x)).innerHTML + 'Qte' +panier[x][0] +  "</br>" 
+    index  +=1;
+  }
+  
+  $('[data-toggle="popover"]').popover()
+  document.getElementById('#pani').setAttribute('data-content',panistring)
+}
+
+
+ 
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Lodge</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'gestionproduit/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'gestionproduit/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'gestionproduit/css/responsive.css'%}" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              Celestin
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'home' %}">Acceuil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  {% comment %} <a class="nav-link" href="{% url 'detail' %}"> Detail</a> {% endcomment %}
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'categorie' %}">Categories </a>
+                  <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'categorie' %}">montre</a>
+                    <a class="dropdown-item"href="{% url 'chaussure' %}">chaussure</a>
+                    <a class="dropdown-item" href="{% url 'maillot' %}">maillot</a>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact </a>
+                </li>
+                <li class="quote_btn-container  ">
+                  <button id="pani" type="button" class="btn " data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+                 sagittis lacus vel augue laoreet rutrum faucibus." style="color: white;">
+                          <a href="{% url 'checkout' %}" style="color: white;">panier</a>   <span id="panier"></span>
+                 </button>
+                  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle dat" data-toggle="dropdown" href="#">Connexion</a>
+                  <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'connexion' %}">se connecter</a>
+                    <a class="dropdown-item" href="{% url 'signup' %}">creer un compte</a>
+                  </ul>
+                </li>
+                <form class="form-inline" method="get" action="{% url 'search' %}">
+                  <input type="search" placeholder="tapez un produit" name="search">
+                
+                 </form>
+              </ul>
+
+            </div>
+           
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- item section -->
+
+  <div class="item_section layout_padding2">
+    <div class="container">
+      <div class="item_container">
+        <div class="box">
+          <div class="price">
+            <h6>
+              BON PRIX
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="images/i-1.png" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              bonne marque
+            </h5>
+          </div>
+        </div>
+        <div class="box">
+          <div class="price">
+            <h6>
+              BON PRIX
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="images/i-2.png" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              Garantie
+            </h5>
+          </div>
+        </div>
+        <div class="box">
+          <div class="price">
+            <h6>
+              BON PRIX
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="images/i-3.png" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              Jamais vue
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end item section -->
+
+
+  <!-- price section -->
+
+  <section class="price_section layout_padding">
+    <div class="container">
+      <div class="heading_container tex-center">
+        <h2>
+          ici nous vous offrons de bonnes montres cliquez sur voir pour plus d'informations sur le produit
+        </h2>
+      </div>
+      <div class="price_container">
+        {% for Produit in montre %}
+        <div class="box">
+          <div class="name">
+            <h6 id="aa{{Produit.id}}">
+              {{Produit.nom}}
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{Produit.image.url}}" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              GNF<span>{{Produit.prix}}</span>
+            </h5>
+            <button id="{{Produit.id}}" class="celestinho btn btn-primary mt-3">ajouter</button>
+            <a class="nav-link btn btn-success" href="detail/{{Produit.id}}" >Voir plus</a>
+          </div>
+        </div>
+        {% endfor %}
+       
+        
+        
+        
+      
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- end price section -->
+
+{% include 'gestionproduit/footer.html' %}
+
+<script>
+
+  if(localStorage.getItem('panier')==null){
+    var panier={};
+   }else{
+    panier=JSON.parse(localStorage.getItem('panier'));
+   }
+  $(document).on('click','.celestinho',function(){
+    var item_id=this.id.toString()
+    console.log(item_id)
+    if(panier[item_id]!= undefined){
+      quantite=panier[item_id][0] +1;
+      panier[item_id][0]=quantite;
+  
+    }else{
+     quantite=1
+     nom=document.getElementById(("aa"+item_id)).innerHTML
+     panier[item_id]=[quantite,nom]
+    }
+    
+    localStorage.setItem('panier',JSON.stringify(panier))
+    document.getElementById('panier').innerHTML=Object.keys(panier).length
+    
+  })
+  affiche(panier)
+  function affiche(panier){
+    var panistring="";
+    var index=1;
+    panistring='Voici votre liste'
+    for(var x in panier){
+      panistring +=document.getElementById(("aa"+x)).innerHTML + 'Qte' +panier[x][0] + "</br>" 
+      index  +=1;
+    }
+    
+    $('[data-toggle="popover"]').popover()
+    document.getElementById('pani').setAttribute('data-content',panistring)
+  }
+  
+  </script>
+
+
+ 
+</body>
+
+</html>

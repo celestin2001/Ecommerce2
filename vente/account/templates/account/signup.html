@@ -1,0 +1,52 @@
+{% extends "gestionproduit/about.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'account/css/signup.css' %}" rel="stylesheet" />
+    <title>Document</title>
+    
+   
+</head>
+<body>
+  {% block header %}
+ 
+  {% endblock%}
+  {% block content %}
+  <center>
+   
+    <h2>si vous êtes interesé par notre site créer votre compte ici</h2>
+    {% for message in messages %}
+    <h1 style="color: red;  ">{{message}}</h1>
+   {% endfor %}
+    <div id="forme">
+  <form  class="mt-3 mb-3 formulaire"  method="post" action="" enctype="multipart/form-data" id="formulaire">
+    {% csrf_token %}
+   
+         
+       
+      <div class="mt-3 mb-3">
+        <label for="">Nom utilisateur</label>
+        <input type="text" name="username" id="">
+      </div>
+      <div class="mt-3 mb-3">
+        <label for="">entrez votre email</label>
+        <input type="email" name="email" id="">
+      </div>
+      <div class="mt-3 mb-3">
+        <label for="">entrez votre mot de passe</label>
+        <input type="password" name="password" id="">
+      </div>
+      
+      <button class="btn btn-primary" type="submit">soumettre</button>
+</form>
+</div>
+</center>
+  {% endblock%}
+    
+    {% include "gestionproduit/footer.html" %}
+</body>
+</html>
